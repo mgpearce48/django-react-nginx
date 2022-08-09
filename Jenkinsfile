@@ -10,7 +10,7 @@ pipeline {
                 docker {
                     image 'node:lts-buster-slim'
                     args '-p 3000:3000'
-                    reuseNode true
+                    // reuseNode true
                 }
             }
             steps {
@@ -21,7 +21,7 @@ pipeline {
             agent {
                 docker {
                     image 'nginx:stable-alpine'
-                    reuseNode true
+                    // reuseNode true
                 }
             }
             steps {
