@@ -18,8 +18,14 @@ pipeline {
             }
         }
         stage('Deploy') {
+            agent {
+                docker {
+                    image 'nginx:stable-alpine'
+                    reuseNode true
+                }
+            }
             steps {
-                echo 'Deploy stage...'
+                echo 'Deploy stage (with nginx)...'
             }
         }
         stage('Login-Dockerhub') {
