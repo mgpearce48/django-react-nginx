@@ -24,18 +24,20 @@ pipeline {
         }
         stage('Login-Dockerhub') {
             steps {
+                echo 'Login stage...'
                 // sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
         stage('Push-Dockerhub') {
             steps {
+                echo 'Push stage...'
                 // sh 'docker push mgpearce/testreact:latest'
             }
         }
     }
     post {
         always {
-            echo 'Post (always)...'
+            echo 'Post stage (always)...'
             // sh 'docker logout'
         }
     }
