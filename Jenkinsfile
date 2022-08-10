@@ -17,13 +17,13 @@ pipeline {
                 echo 'Build stage...'
                 sh 'npm install react/blogapi/'
                 
-                sh 'chmod +x ./react/blogapi/build.sh'
-                sh './react/blogapi/build.sh'
+//                 sh 'chmod +x ./react/blogapi/build.sh'
+//                 sh './react/blogapi/build.sh'
 
-                input message: 'Finished reviewing the build stage? (Click "Proceed" to continue)'
+//                 input message: 'Finished reviewing the build stage? (Click "Proceed" to continue)'
 
-                sh 'chmod +x ./react/blogapi/kill.sh'
-                sh './react/blogapi/kill.sh'
+//                 sh 'chmod +x ./react/blogapi/kill.sh'
+//                 sh './react/blogapi/kill.sh'
             }
         }
         stage('Deploy') {
