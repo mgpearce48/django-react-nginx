@@ -15,14 +15,17 @@ pipeline {
             }
             steps {
                 echo 'Build stage...'
-                sh 'cd frontend'
-                sh 'npm install'
-                sh 'npm run build'
-                sh 'npm start &'
-                sh 'sleep 1'
-                sh 'echo $! > .pidfile'
-                input message: 'Finished reviewing the build stage? (Click "Proceed" to continue)'
-                sh 'kill $(cat .pidfile)'
+                sh 'pwd'
+                sh 'whoami'
+                sh 'ls -la'
+//                 sh 'cd frontend'
+//                 sh 'npm install'
+//                 sh 'npm run build'
+//                 sh 'npm start &'
+//                 sh 'sleep 1'
+//                 sh 'echo $! > .pidfile'
+//                 input message: 'Finished reviewing the build stage? (Click "Proceed" to continue)'
+//                 sh 'kill $(cat .pidfile)'
             }
         }
         stage('Deploy') {
