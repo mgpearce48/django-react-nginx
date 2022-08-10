@@ -16,7 +16,7 @@ pipeline {
             steps {
                 echo 'Build stage...'
                 sh 'npm install react/blogapi/'
-                sh 'npm run build'
+//                 sh 'npm run build'
                 sh 'npm --prefix /var/jenkins_home/workspace/django-react-nginx/react/blogapi run build'
 //                 sh 'npm start &'
 //                 sh 'sleep 1'
