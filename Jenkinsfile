@@ -15,6 +15,8 @@ pipeline {
             }
             steps {
                 echo 'Build stage...'
+                sh 'npm install react/blogapi/'
+                
                 sh 'chmod +x ./react/blogapi/build.sh'
                 sh './react/blogapi/build.sh'
 
