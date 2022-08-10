@@ -18,13 +18,13 @@ pipeline {
 
                 sh 'npm install --prefix /var/jenkins_home/workspace/django-react-nginx/react/blogapi react/blogapi/'
 
-//                 sh 'chmod +x ./react/blogapi/build.sh'
-//                 sh './react/blogapi/build.sh'
+                sh 'chmod +x ./react/blogapi/build.sh'
+                sh './react/blogapi/build.sh'
 
-//                 input message: 'Finished reviewing the build stage? (Click "Proceed" to continue)'
+                input message: 'Finished reviewing the build stage? (Click "Proceed" to continue)'
 
-//                 sh 'chmod +x ./react/blogapi/kill.sh'
-//                 sh './react/blogapi/kill.sh'
+                sh 'chmod +x ./react/blogapi/kill.sh'
+                sh './react/blogapi/kill.sh'
             }
         }
         stage('Deploy') {
@@ -37,7 +37,7 @@ pipeline {
             }
             steps {
                 echo 'Deploy stage (with nginx)...'
-                input message: 'Finished reviewing the deploy stage? (Click "Proceed" to continue)'
+//                 input message: 'Finished reviewing the deploy stage? (Click "Proceed" to continue)'
             }
         }
         stage('Login-Dockerhub') {
@@ -50,7 +50,7 @@ pipeline {
             steps {
                 echo 'Push stage...'
                 // sh 'docker push mgpearce/testreact:latest'
-                input message: 'Finished reviewing teh dockerhub stage? (Click "Proceed" to continue)'
+//                 input message: 'Finished reviewing teh dockerhub stage? (Click "Proceed" to continue)'
             }
         }
     }
