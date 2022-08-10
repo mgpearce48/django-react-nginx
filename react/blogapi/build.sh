@@ -1,6 +1,6 @@
+#!/usr/bin/env sh
 
 set -x
-npm install react/blogapi/
 npm run build
 npm start &
 sleep 1
