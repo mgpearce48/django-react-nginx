@@ -19,9 +19,9 @@ pipeline {
                 sh 'npm --prefix /var/jenkins_home/workspace/django-react-nginx/react/blogapi run build'
                 sh 'npm --prefix /var/jenkins_home/workspace/django-react-nginx/react/blogapi start &'
                 sh 'sleep 1'
-                sh 'echo $! > .pidfile'
+                sh 'echo $! > /var/jenkins_home/workspace/django-react-nginx/react/blogapi/.pidfile'
                 input message: 'Finished reviewing the build stage? (Click "Proceed" to continue)'
-                sh 'kill $(cat .pidfile)'
+                sh 'kill $(cat /var/jenkins_home/workspace/django-react-nginx/react/blogapi/.pidfile)'
             }
         }
         stage('Deploy') {
