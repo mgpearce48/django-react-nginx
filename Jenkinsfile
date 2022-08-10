@@ -16,7 +16,8 @@ pipeline {
             steps {
                 echo 'Build stage...'
                 sh 'npm install react/blogapi/'
-//                 sh 'npm run build'
+                sh 'npm run build'
+                sh 'npm --prefix react/blogapi/ run build'
 //                 sh 'npm start &'
 //                 sh 'sleep 1'
 //                 sh 'echo $! > .pidfile'
