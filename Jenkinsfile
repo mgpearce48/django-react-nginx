@@ -22,6 +22,7 @@ pipeline {
             agent {
                 docker {
                     image 'nginx:stable-alpine'
+                    args '-p 80:80'
                     reuseNode true
                 }
             }
