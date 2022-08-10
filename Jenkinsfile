@@ -15,13 +15,13 @@ pipeline {
             }
             steps {
                 echo 'Build stage...'
-                sh 'npm install react/blogapi/'
-                sh 'npm --prefix /var/jenkins_home/workspace/django-react-nginx/react/blogapi run build'
-                sh 'npm --prefix /var/jenkins_home/workspace/django-react-nginx/react/blogapi start &'
-                sh 'sleep 1'
-                sh 'echo $! > /var/jenkins_home/workspace/django-react-nginx/react/blogapi/.pidfile'
+                sh 'chmod +x ./react/blogapi/build.sh'
+                sh './react/blogapi/build.sh'
+
                 input message: 'Finished reviewing the build stage? (Click "Proceed" to continue)'
-                sh 'kill $(cat /var/jenkins_home/workspace/django-react-nginx/react/blogapi/.pidfile)'
+
+                sh 'chmod +x ./react/blogapi/kill.sh'
+                sh './react/blogapi/kill.sh'
             }
         }
         stage('Deploy') {
