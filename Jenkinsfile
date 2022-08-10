@@ -15,6 +15,7 @@ pipeline {
             }
             steps {
                 echo 'Build stage...'
+                sh 'cd frontend'
                 sh 'npm install'
                 sh 'npm run build'
                 sh 'npm start &'
