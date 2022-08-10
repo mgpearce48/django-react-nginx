@@ -15,9 +15,9 @@ pipeline {
             }
             steps {
                 echo 'Build stage...'
-                sh 'cd react/blogapi'
-                sh 'npm install'
-                
+
+                sh 'npm install --prefix /var/jenkins_home/workspace/django-react-nginx/react/blogapi react/blogapi/'
+
 //                 sh 'chmod +x ./react/blogapi/build.sh'
 //                 sh './react/blogapi/build.sh'
 
