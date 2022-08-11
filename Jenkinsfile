@@ -39,7 +39,7 @@ pipeline {
 //                     args '-p 80:80'
 //                     reuseNode true
 //                 }
-            }
+//             }
             steps {
                 echo 'Deploy stage (with nginx)...'
 //                 input message: 'Finished reviewing the deploy stage? (Click "Proceed" to continue)'
