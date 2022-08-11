@@ -16,24 +16,24 @@ pipeline {
             steps {
                 echo 'Build stage...'
 
-                sh 'npm install --prefix /var/jenkins_home/workspace/django-react-nginx/react/blogapi react/blogapi/'
+//                 sh 'npm install --prefix /var/jenkins_home/workspace/django-react-nginx/react/blogapi react/blogapi/'
 
-                sh 'chmod +x ./react/blogapi/build.sh'
-                sh './react/blogapi/build.sh'
+//                 sh 'chmod +x ./react/blogapi/build.sh'
+//                 sh './react/blogapi/build.sh'
 
-                input message: 'Finished reviewing the build stage? (Click "Proceed" to continue)'
+//                 input message: 'Finished reviewing the build stage? (Click "Proceed" to continue)'
 
-                sh 'chmod +x ./react/blogapi/kill.sh'
-                sh './react/blogapi/kill.sh'
+//                 sh 'chmod +x ./react/blogapi/kill.sh'
+//                 sh './react/blogapi/kill.sh'
             }
         }
         stage('Deploy') {
-            agent {
-                docker {
-                    image 'nginx:stable-alpine'
-                    args '-p 80:80'
-                    reuseNode true
-                }
+//             agent {
+//                 docker {
+//                     image 'nginx:stable-alpine'
+//                     args '-p 80:80'
+//                     reuseNode true
+//                 }
             }
             steps {
                 echo 'Deploy stage (with nginx)...'
