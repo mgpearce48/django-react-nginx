@@ -5,14 +5,19 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('mgpearce-dockerhub')
     }
     stages {
+        stage('create-images) {
+              steps {
+                  echo 'Create images...'
+              }
+        }
         stage('Build') {
-            agent {
-                docker {
-                    image 'node:lts-buster-slim'
-                    args '-p 3000:3000'
-                    reuseNode true
-                }
-            }
+//             agent {
+//                 docker {
+//                     image 'node:lts-buster-slim'
+//                     args '-p 3000:3000'
+//                     reuseNode true
+//                 }
+//             }
             steps {
                 echo 'Build stage...'
 
