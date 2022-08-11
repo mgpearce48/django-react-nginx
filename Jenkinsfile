@@ -8,12 +8,8 @@ pipeline {
         stage('create-images') {
               steps {
                   echo 'Create images...'
-                  sh 'docker --version'
-                  sh 'docker ps -a'
+                  sh 'docker build -t react-image ./react/blogapi'
                   sh 'docker images'
-                  sh 'pwd'
-                  sh 'whoami'
-                  sh 'ls -la'
               }
         }
         stage('Build') {
