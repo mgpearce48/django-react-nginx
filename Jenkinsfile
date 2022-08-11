@@ -8,11 +8,13 @@ pipeline {
         stage('create-images') {
               steps {
                   echo 'Create images...'
-                  sh 'docker build -t react-image -f ./react/blogapi/Dockerfile.prod .'
-                  sh 'docker images'
-                  sh 'docker run --name react-app -d -it --rm -p 80:80 react-image'
+                  sh 'docker-compose up -d'
+//                   sh 'docker build -t react-image -f ./react/blogapi/Dockerfile.prod .'
+//                   sh 'docker images'
+//                   sh 'docker run --name react-app -d -it --rm -p 80:80 react-image'
                   input message: 'Finished reviewing the react app? (Click "Proceed" to continue)'
-                  sh 'docker stop react-app'
+                  sh 'docker-compose down'
+//                   sh 'docker stop react-app'
               }
         }
         stage('Build') {
