@@ -1,9 +1,9 @@
 FROM node:14-alpine as build
 
 WORKDIR /react/blogapi
-COPY package.json .
+COPY package.json ./react/blogapi
 RUN npm install
-COPY ./react/blogapi .
+COPY ./react/blogapi ./react/blogapi
 RUN npm run build
 
 FROM nginx:stable-alpine
