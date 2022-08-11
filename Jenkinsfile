@@ -8,7 +8,7 @@ pipeline {
         stage('create-images') {
               steps {
                   echo 'Create images...'
-                  sh 'docker build -t react-image ./react/blogapi'
+                  sh 'docker build -t react-image -f Dockerfile.prod ./react/blogapi'
                   sh 'docker images'
               }
         }
