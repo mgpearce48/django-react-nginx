@@ -5,7 +5,7 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('mgpearce-dockerhub')
     }
     stages {
-        stage('create-images) {
+        stage('create-images') {
               steps {
                   echo 'Create images...'
               }
