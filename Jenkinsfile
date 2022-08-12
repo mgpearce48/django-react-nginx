@@ -8,7 +8,6 @@ pipeline {
         stage('Build & Test') {
               steps {
                   echo 'Create images...'
-                  cleanWs()
                   sh 'docker-compose up -d'
                   input message: 'Finished reviewing the react app? (Click "Proceed" to continue)'
                   sh 'docker-compose down'
@@ -32,6 +31,12 @@ pipeline {
     post {
         always {
             sh 'docker logout'
+            cleanWs(cleanWhenNotBuilt: false,
+                    deleteDirs: true,
+                    disableDeferredWipeout: true,
+                    notFailBuild: true,
+                    patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
+                               [pattern: '.propsfile', type: 'EXCLUDE']])
         }
     }
 }
