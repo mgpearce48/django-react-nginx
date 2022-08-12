@@ -31,7 +31,7 @@ pipeline {
     post {
         always {
             sh 'docker logout'
-            cleanWs(notFailBuild: true)
+//             cleanWs(notFailBuild: true)
         }
     }
 }
