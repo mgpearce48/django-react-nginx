@@ -5,71 +5,29 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('mgpearce-dockerhub')
     }
     stages {
-        stage('create-images') {
+        stage('Build & Test') {
               steps {
                   echo 'Create images...'
                   sh 'docker-compose up -d'
-//                   sh 'docker build -t react-image -f ./react/blogapi/Dockerfile.prod .'
-//                   sh 'docker images'
-//                   sh 'docker run --name react-app -d -it --rm -p 80:80 react-image'
                   input message: 'Finished reviewing the react app? (Click "Proceed" to continue)'
                   sh 'docker-compose down'
-//                   sh 'docker stop react-app'
               }
         }
-        stage('Build') {
-//             agent {
-//                 docker {
-//                     image 'node:lts-buster-slim'
-//                     args '-p 3000:3000'
-//                     reuseNode true
-//                 }
-//             }
+        stage('Login Dockerhub') {
             steps {
-                echo 'Build stage...'
-
-//                 sh 'npm install --prefix /var/jenkins_home/workspace/django-react-nginx/react/blogapi react/blogapi/'
-
-//                 sh 'chmod +x ./react/blogapi/build.sh'
-//                 sh './react/blogapi/build.sh'
-
-//                 input message: 'Finished reviewing the build stage? (Click "Proceed" to continue)'
-
-//                 sh 'chmod +x ./react/blogapi/kill.sh'
-//                 sh './react/blogapi/kill.sh'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
-        stage('Deploy') {
-//             agent {
-//                 docker {
-//                     image 'nginx:stable-alpine'
-//                     args '-p 80:80'
-//                     reuseNode true
-//                 }
-//             }
+        stage('Push Dockerhub') {
             steps {
-                echo 'Deploy stage (with nginx)...'
-//                 input message: 'Finished reviewing the deploy stage? (Click "Proceed" to continue)'
-            }
-        }
-        stage('Login-Dockerhub') {
-            steps {
-                echo 'Login stage...'
-                // sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-            }
-        }
-        stage('Push-Dockerhub') {
-            steps {
-                echo 'Push stage...'
+                echo 'Push Dockerhub...'
                 // sh 'docker push mgpearce/testreact:latest'
-//                 input message: 'Finished reviewing teh dockerhub stage? (Click "Proceed" to continue)'
             }
         }
     }
     post {
         always {
-            echo 'Post stage (always)...'
-            // sh 'docker logout'
+            sh 'docker logout'
         }
     }
 }
