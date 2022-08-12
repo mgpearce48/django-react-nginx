@@ -21,7 +21,10 @@ pipeline {
         stage('Push Dockerhub') {
             steps {
                 echo 'Push Dockerhub...'
-                // sh 'docker push mgpearce/testreact:latest'
+                sh 'docker tag nginx mgpearce/nginx_frontend:latest'
+                sh 'docker tag django-react-nginx_backend mgpearce/django-react-nginx_backend:latest'
+                sh 'docker push mgpearce/nginx_frontend:latest'
+                sh 'docker push mgpearce/django-react-nginx_backend:latest'
             }
         }
     }
