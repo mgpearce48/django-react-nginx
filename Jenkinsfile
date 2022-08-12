@@ -8,6 +8,7 @@ pipeline {
         stage('Build & Test') {
               steps {
                   echo 'Create images...'
+                  cleanWs()
                   sh 'docker-compose up -d'
                   input message: 'Finished reviewing the react app? (Click "Proceed" to continue)'
                   sh 'docker-compose down'
