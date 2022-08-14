@@ -10,6 +10,7 @@ services:
   frontend:
     build:
       context: ./react/blogapi
+    command: [nginx-debug, '-g', 'daemon off;']
     ports:
       - 81:8080
 #     volumes:
