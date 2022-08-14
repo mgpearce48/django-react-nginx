@@ -6,7 +6,7 @@ services:
       context: ./django
     command: gunicorn core.wsgi --bind 0.0.0.0:8000
     ports:
-      - 8000:8000
+      - 8001:8000
   frontend:
     build:
       context: ./react/blogapi
