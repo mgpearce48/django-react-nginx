@@ -1,4 +1,4 @@
-FROM node:15.13-alpine
+FROM node:15.13-alpine as build
 WORKDIR /react
 COPY package.json .
 RUN npm install
