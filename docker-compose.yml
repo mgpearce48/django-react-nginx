@@ -4,7 +4,6 @@ services:
   backend:
     build:
       context: ./django
-    command: gunicorn core.wsgi --bind 0.0.0.0:8000
     ports:
       - 8000:8000
   frontend:
