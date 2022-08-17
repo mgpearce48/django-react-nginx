@@ -12,7 +12,11 @@ function App() {
 
 	useEffect(() => {
 		setAppState({ loading: true });
-		const apiUrl = `http://{process.env.REACT_APP_HOST}/api/`;
+		if (process.env.NODE_ENV !== 'production') {
+			const apiUrl = `http://michaelpearce.me/api/`;
+		} else {
+			const apiUrl = `http://127.0.0.1/api/`;
+		}
 		fetch(apiUrl)
 			.then((data) => data.json())
 			.then((posts) => {
