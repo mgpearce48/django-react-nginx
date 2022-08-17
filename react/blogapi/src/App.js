@@ -12,10 +12,9 @@ function App() {
 
 	useEffect(() => {
 		setAppState({ loading: true });
+		let apiUrl = `http://127.0.0.1/api/`;
 		if (process.env.NODE_ENV == 'production') {
-			const apiUrl = `http://michaelpearce.me/api/`;
-		} else {
-			const apiUrl = `http://127.0.0.1/api/`;
+			apiUrl = `http://michaelpearce.me/api/`;
 		}
 		fetch(apiUrl)
 			.then((data) => data.json())
