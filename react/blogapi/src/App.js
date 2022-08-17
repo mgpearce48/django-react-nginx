@@ -12,7 +12,7 @@ function App() {
 
 	useEffect(() => {
 		setAppState({ loading: true });
-		if (process.env.NODE_ENV !== 'production') {
+		if (process.env.NODE_ENV == 'production') {
 			const apiUrl = `http://michaelpearce.me/api/`;
 		} else {
 			const apiUrl = `http://127.0.0.1/api/`;
